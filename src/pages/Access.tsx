@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ConfirmEmailForm } from "@/features/auth/components/ConfirmEmailForm";
+import SignInForm from "@/features/auth/components/SignInForm";
 import { SignUpForm } from "@/features/auth/components/SignUpForm";
 import { useState } from "react";
 
@@ -30,6 +31,9 @@ const Access = () => {
           ) : (
             <ConfirmEmailForm codeDestination={codeDestination} />
           )}
+        </TabsContent>
+        <TabsContent value="sign-in">
+          <SignInForm />
         </TabsContent>
       </Tabs>
     </div>

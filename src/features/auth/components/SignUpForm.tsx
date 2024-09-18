@@ -10,22 +10,18 @@ import { type ChangeEvent, useEffect, useState } from "react";
 import { postSignUp } from "../authService";
 import { passwordInputValidation } from "../inputValidation";
 import { codeDestination } from "@/pages/Access";
+import { UserAuthenticationDetails } from "../authTypes";
 
 interface SignUpFormProps {
   setCodeDestination: React.Dispatch<React.SetStateAction<codeDestination>>;
   setSignUpSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export type UserSignUpDetails = {
-  email: string;
-  password: string;
-};
-
 export const SignUpForm = ({
   setCodeDestination,
   setSignUpSuccess,
 }: SignUpFormProps) => {
-  const [signUp, setSignUp] = useState<UserSignUpDetails>({
+  const [signUp, setSignUp] = useState<UserAuthenticationDetails>({
     email: "",
     password: "",
   });

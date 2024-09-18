@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UserSignUpDetails } from "./components/SignUpForm";
+import { UserAuthenticationDetails } from "./authTypes";
 
 const comfy = axios.create({
   baseURL: "https://normal-ibex-safely.ngrok-free.app",
@@ -8,7 +8,7 @@ const comfy = axios.create({
   },
 });
 
-export const postSignUp = async (details: UserSignUpDetails) => {
+export const postSignUp = async (details: UserAuthenticationDetails) => {
   const { email, password } = details;
   const request = {
     email,
@@ -47,6 +47,21 @@ export const resendConfirmationCode = async (email: string) => {
   try {
     const path = "/resend-confirmation-code";
     await comfy.post(path, request);
+  } catch (error: any) {
+    throw error.response.data.message;
+  }
+};
+
+export const userSignIn = async (details: UserAuthenticationDetails) => {
+  const { email, password } = details;
+  const request = {
+    email,
+    password,
+  };
+  try {
+    const path = "/sign-in";
+    const response = await comfy.post(path, request);
+    return response;
   } catch (error: any) {
     throw error.response.data.message;
   }
