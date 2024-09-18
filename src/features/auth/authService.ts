@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UserAuthenticationDetails } from "./authTypes";
+import { ResetPasswordDetails, UserAuthenticationDetails } from "./authTypes";
 
 const comfy = axios.create({
   baseURL: "https://normal-ibex-safely.ngrok-free.app",
@@ -60,6 +60,35 @@ export const userSignIn = async (details: UserAuthenticationDetails) => {
   };
   try {
     const path = "/sign-in";
+    const response = await comfy.post(path, request);
+    return response;
+  } catch (error: any) {
+    throw error.response.data.message;
+  }
+};
+
+export const sendResetCode = async (email:string) => {
+  const request = {
+    email,
+  };
+  try {
+    const path = "/forgot-password";
+    const response = await comfy.post(path, request);
+    return response;
+  } catch (error: any) {
+    throw error.response.data.message;
+  }
+};
+
+export const resetUserPassword = async (details: ResetPasswordDetails) => {
+  const { email, password, code } = details;
+  const request = {
+    email,
+    password,
+    code
+  };
+  try {
+    const path = "/confirm-forgot-password";
     const response = await comfy.post(path, request);
     return response;
   } catch (error: any) {
