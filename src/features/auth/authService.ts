@@ -8,6 +8,11 @@ const comfy = axios.create({
   },
 });
 
+comfy.interceptors.request.use((config) => {
+  config.headers.Authorization = `Bearer ${localStorage.getItem("x-token")}`;
+  return config;
+});
+
 export const postSignUp = async (details: UserAuthenticationDetails) => {
   const { email, password } = details;
   const request = {
@@ -61,13 +66,13 @@ export const userSignIn = async (details: UserAuthenticationDetails) => {
   try {
     const path = "/sign-in";
     const response = await comfy.post(path, request);
-    return response;
+    return response.data.authenticationResult;
   } catch (error: any) {
     throw error.response.data.message;
   }
 };
 
-export const sendResetCode = async (email:string) => {
+export const sendResetCode = async (email: string) => {
   const request = {
     email,
   };
@@ -85,7 +90,7 @@ export const resetUserPassword = async (details: ResetPasswordDetails) => {
   const request = {
     email,
     password,
-    code
+    code,
   };
   try {
     const path = "/confirm-forgot-password";
@@ -93,5 +98,15 @@ export const resetUserPassword = async (details: ResetPasswordDetails) => {
     return response;
   } catch (error: any) {
     throw error.response.data.message;
+  }
+};
+
+export const verifyAccessToken = async () => {
+  try {
+    const path = "/api/auth/verify-access";
+    await comfy.post(path);
+    return true;
+  } catch (error) {
+    throw error;
   }
 };

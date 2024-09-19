@@ -1,7 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Toaster } from "@/components/ui/toaster";
 import { ConfirmEmailForm } from "@/features/auth/components/ConfirmEmailForm";
 import SignInForm from "@/features/auth/components/SignInForm";
 import { SignUpForm } from "@/features/auth/components/SignUpForm";
+import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 
 export type codeDestination = {
@@ -10,11 +13,13 @@ export type codeDestination = {
 };
 
 const Access = () => {
+  const { toast } = useToast();
   const [signUpSuccess, setSignUpSuccess] = useState(false);
   const [codeDestination, setCodeDestination] = useState<codeDestination>({
     email: "",
     user: "",
   });
+
   return (
     <div className="h-lvh flex justify-center items-center">
       <Tabs defaultValue="register" className="">

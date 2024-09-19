@@ -38,8 +38,9 @@ const SignInForm = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     try {
-      const signInDetails = await userSignIn(signIn);
-      console.log(signInDetails);
+      const tokens = await userSignIn(signIn);
+      localStorage.setItem('x-token', tokens.accessToken)
+      localStorage.setItem('x-refresh-token', tokens.refreshToken)
       navigate("/dashboard");
     } catch (error: any) {
       setErrorMessage(error);
