@@ -110,3 +110,13 @@ export const verifyAccessToken = async () => {
     throw error;
   }
 };
+
+export const signOutUser = async () => {
+  try {
+    const path = "/sign-out";
+    const response = await comfy.post(path);
+    return response
+  } catch (error) {
+    throw error;
+  }
+};

@@ -15,3 +15,23 @@ export const NAVIGATION = {
     key: "dashboard-nav",
   },
 };
+
+export const SIDEBAR_NAV = {
+  analytics: {
+    name: "Analytics",
+    link: "/dashboard/analytics",
+    key: "dash-analytics",
+  },
+  strategies: {
+    name: "Strategies",
+    link: "/dashboard/strategies",
+    key: "dash-strategies",
+  },
+  settings: {
+    name: "Settings",
+    link: "/dashboard/settings",
+    key: "dash-settings",
+  },
+};
+
+export const desktopSize = '960px'
