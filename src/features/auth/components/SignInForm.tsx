@@ -6,7 +6,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { UserAuthenticationDetails } from "../authTypes";
 import { userSignIn } from "../authService";
 import { useNavigate } from "react-router-dom";
@@ -39,8 +39,12 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       const tokens = await userSignIn(signIn);
-      localStorage.setItem('x-token', tokens.accessToken)
-      localStorage.setItem('x-refresh-token', tokens.refreshToken)
+      console.log(tokens, "<<<");
+
+      localStorage.setItem("x-token", tokens.accessToken);
+      localStorage.setItem("x-refresh-token", tokens.refreshToken);
+      localStorage.setItem("idToken", tokens.idToken)
+
       navigate("/dashboard");
     } catch (error: any) {
       setErrorMessage(error);

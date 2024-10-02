@@ -7,6 +7,7 @@ import ProtectedRoutes from "./features/auth/components/ProtectedRoutes";
 import { Toaster } from "./components/ui/toaster";
 import Header from "./layouts/Header";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Analytics from "./features/analytics/components/Analytics";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
             <Route path="/access" element={<Access />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route element={<ProtectedRoutes />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route
+                path="/dashboard/analytics"
+                element={<Dashboard content={<Analytics />} />}
+              />
             </Route>
           </Routes>
           <Toaster />

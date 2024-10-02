@@ -6,7 +6,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NAVIGATION } from "@/constants";
+import { NAVIGATION, SIDEBAR_NAV } from "@/constants";
+import UserBar from "@/features/dashboard/components/UserBar";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
 
@@ -23,20 +24,23 @@ const NavDesktop = () => {
         <SheetHeader className="">
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
-        <ul className="flex flex-col mt-4">
-          {Object.keys(NAVIGATION).map((key) => {
-            const navKey = key as keyof typeof NAVIGATION;
-            return (
-              <Link
-                key={NAVIGATION[navKey].key}
-                to={NAVIGATION[navKey].link}
-                className="border-b-2 p-4 hover:bg-muted"
-              >
-                {NAVIGATION[navKey].name}
-              </Link>
-            );
-          })}
-        </ul>
+        <section className="flex flex-col justify-between h h-full pb-4">
+          <ul className="flex flex-col mt-4">
+            {Object.keys(SIDEBAR_NAV).map((key) => {
+              const navKey = key as keyof typeof SIDEBAR_NAV;
+              return (
+                <Link
+                  key={SIDEBAR_NAV[navKey].key}
+                  to={SIDEBAR_NAV[navKey].link}
+                  className="border-b-2 p-4 hover:bg-muted"
+                >
+                  {SIDEBAR_NAV[navKey].name}
+                </Link>
+              );
+            })}
+          </ul>
+          <UserBar />
+        </section>
       </SheetContent>
     </Sheet>
   );
