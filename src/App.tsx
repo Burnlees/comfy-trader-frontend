@@ -8,6 +8,7 @@ import { Toaster } from "./components/ui/toaster";
 import Header from "./layouts/Header";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Analytics from "./features/analytics/components/Analytics";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
               <Route
                 path="/dashboard/analytics"
                 element={<Dashboard content={<Analytics />} />}
+              />
+            <Route
+                path="/dashboard/settings"
+                element={<Dashboard content={<Settings />} />}
               />
             </Route>
           </Routes>

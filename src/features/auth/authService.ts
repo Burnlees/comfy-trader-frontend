@@ -1,17 +1,5 @@
-import axios from "axios";
+import comfy from "@/api";
 import { ResetPasswordDetails, UserAuthenticationDetails } from "./authTypes";
-
-const comfy = axios.create({
-  baseURL: "https://normal-ibex-safely.ngrok-free.app",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-comfy.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem("x-token")}`;
-  return config;
-});
 
 export const postSignUp = async (details: UserAuthenticationDetails) => {
   const { email, password } = details;
@@ -115,7 +103,7 @@ export const signOutUser = async () => {
   try {
     const path = "/sign-out";
     const response = await comfy.post(path);
-    return response
+    return response;
   } catch (error) {
     throw error;
   }
