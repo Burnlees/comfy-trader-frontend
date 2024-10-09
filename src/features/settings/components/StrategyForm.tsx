@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -10,7 +9,6 @@ import { StrategyProps } from "../settingsTypes";
 import { Slider } from "@/components/ui/slider";
 
 const StrategyForm = ({
-  strategy,
   setStrategy,
   currentStrategy,
   handleSubmit,
