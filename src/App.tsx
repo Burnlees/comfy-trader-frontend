@@ -7,8 +7,8 @@ import ProtectedRoutes from "./features/auth/components/ProtectedRoutes";
 import { Toaster } from "./components/ui/toaster";
 import Header from "./layouts/Header";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Analytics from "./features/analytics/components/Analytics";
 import Settings from "./pages/Settings";
+import Analytics from "./pages/Analytics";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
                 path="/dashboard/analytics"
                 element={<Dashboard content={<Analytics />} />}
               />
-            <Route
+              <Route
                 path="/dashboard/settings"
                 element={<Dashboard content={<Settings />} />}
               />

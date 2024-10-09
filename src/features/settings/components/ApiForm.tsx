@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { ApiProps } from "../settingsTypes";
 
 const ApiForm = ({ apiKeys, setApiKeys, handleSubmit }: ApiProps) => {

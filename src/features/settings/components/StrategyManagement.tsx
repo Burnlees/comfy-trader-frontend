@@ -14,7 +14,6 @@ import {
   postUserSettings,
 } from "../settingsService";
 import StrategyActiveSwitch from "./StrategyActiveSwitch";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 

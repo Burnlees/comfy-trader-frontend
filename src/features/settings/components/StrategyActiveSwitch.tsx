@@ -4,7 +4,6 @@ import { StrategyProps } from "../settingsTypes";
 const StrategyActiveSwitch = ({
   strategy,
   setStrategy,
-  currentStrategy,
 }: StrategyProps) => {
   const handleClick = () => {
     setStrategy((currStrategy) => {
