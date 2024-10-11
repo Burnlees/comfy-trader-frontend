@@ -13,7 +13,7 @@ const Sidebar = () => {
             <Link
               key={SIDEBAR_NAV[navKey].key}
               to={SIDEBAR_NAV[navKey].link}
-              className="border-b-2 p-4 hover:bg-muted hover:shadow-inner"
+              className="border-b-2 p-4 hover:bg-primary hover:text-primary-foreground hover:shadow-inner"
             >
               {SIDEBAR_NAV[navKey].name}
             </Link>

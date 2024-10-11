@@ -3,6 +3,7 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import StrategyForm from "./StrategyForm";
 import { useUserContext } from "@/contexts/UserContext";
@@ -16,6 +17,7 @@ import {
 import StrategyActiveSwitch from "./StrategyActiveSwitch";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { Separator } from "@/components/ui/separator";
 
 const StrategyManagement = () => {
   const { user } = useUserContext();
@@ -66,9 +68,9 @@ const StrategyManagement = () => {
 
   return (
     <section className="h-full">
-      <Card className="flex flex-col justify-between h-full overflow-hidden drop-shadow-lg">
-        <CardHeader className="flex flex-row justify-between bg-muted drop-shadow-lg border-b-[1px] border-slate-500">
-          <h2>Strategy Management</h2>
+      <Card className="flex flex-col justify-between h-full overflow-hidden">
+        <CardHeader className="flex flex-row justify-between">
+          <CardTitle>Strategy Management</CardTitle>
           <StrategyActiveSwitch
             strategy={strategy}
             setStrategy={setStrategy}
