@@ -17,9 +17,19 @@ export const fetchPrice = async (ticker: string) => {
       `https://api.coingecko.com/api/v3/simple/price?ids=${ticker}&vs_currencies=usd`
     );
     console.log(response);
-    
+
     // const data = await response.json();
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const fetchTradeHistory = async () => {
+  try {
+    const path = "/get-trades-history";
+    const { data } = await comfy.get(path);
+    return data.tradesHistory;
+  } catch (error) {
+    throw error;
   }
 };

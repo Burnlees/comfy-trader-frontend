@@ -3,7 +3,7 @@ import StrategyManagement from "@/features/settings/components/StrategyManagemen
 
 const Settings = () => {
   return (
-    <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-2">
+    <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:grid-rows-2">
       <APIManagement />
       <StrategyManagement />
     </div>

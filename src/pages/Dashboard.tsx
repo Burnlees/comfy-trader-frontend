@@ -7,11 +7,11 @@ const Dashboard: React.FC<DashboardProps> = ({ content }) => {
   const isDesktop = useMediaQuery(`(min-width: ${desktopSize})`);
 
   return (
-    <div className="lg:grid lg:grid-cols-[200px_minmax(900px,_1fr)] lg:h-full">
-      <nav className="border-r-2 border-primary shadow-2xl">
+    <div className="max-h-screen h-screen lg:grid lg:grid-cols-[200px_minmax(900px,_1fr)] lg:grid-rows-1 overflow-auto">
+      <nav className="border-r-2">
         {isDesktop ? <Sidebar /> : null}
       </nav>
-      <section className="p-2">{content}</section>
+      <section className="p-4 max-h-screen overflow-auto drop-shadow-md">{content}</section>
     </div>
   );
 };

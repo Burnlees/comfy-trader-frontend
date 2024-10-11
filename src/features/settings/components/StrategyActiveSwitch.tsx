@@ -17,7 +17,7 @@ const StrategyActiveSwitch = ({
         id="strategy-active"
         onClick={handleClick}
         checked={strategy.bot_on}
-        className=""
+        className="mt-0"
       />
     </>
   );

@@ -3,6 +3,7 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import ApiForm from "./ApiForm";
 import { Separator } from "@/components/ui/separator";
@@ -35,12 +36,11 @@ const APIManagement = () => {
 
   return (
     <section className="h-full">
-      <Card className="h-full overflow-hidden drop-shadow-lg">
-        <CardHeader className="bg-muted drop-shadow-lg border-b-[1px] border-slate-500">
-          <h2>API Management</h2>
+      <Card className="h-full overflow-hidden">
+        <CardHeader className="">
+          <CardTitle>API Management</CardTitle>
         </CardHeader>
-        <Separator className="mb-4" />
-        <CardContent className="flex flex-col gap-4">
+        <CardContent className="flex flex-col gap-4 mt-4">
           <CurrentApi />
           <ApiForm
             apiKeys={apiKeys}
