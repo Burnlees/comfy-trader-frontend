@@ -22,8 +22,6 @@ const TradesHistory = () => {
   if (isPending) return <Progress />;
   if (error) return "An error has occured: " + error.message;
 
-  console.log(data);
-
   return (
     <div className="">
       <Card className="">
