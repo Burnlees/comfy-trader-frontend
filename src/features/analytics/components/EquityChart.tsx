@@ -19,6 +19,7 @@ const EquityChart = ({ ledgerInfo }: EquityChartProps) => {
       color: "hsl(var(--chart-1))",
     },
   } satisfies ChartConfig;
+  
 
   if (isPending) return <Progress />;
   if (error) return "An error has occured: " + error.message;

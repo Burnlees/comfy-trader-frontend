@@ -1,7 +1,9 @@
 import { dateFormatter } from "../src/lib/utils";
-import { formatEquityChartData } from "../src/features/analytics/analyticsUtils";
+import {
+  formatEquityChartData,
+  formatWinLossChartData,
+} from "../src/features/analytics/analyticsUtils";
 import { describe, test, expect } from "vitest";
-import { EquityChartDataPoint } from "../src/features/analytics/analyticsTypes";
 
 describe("dateFormatter", () => {
   test("should return a string when passed a timestamp", () => {
@@ -328,6 +330,191 @@ describe("formatEquityChartData", () => {
       },
     };
     const actual = formatEquityChartData(input);
+    expect(actual).not.toBe(input);
+  });
+});
+
+describe("formatWinLossChartData", () => {
+  test("should return an array when passed a ledger info object", () => {
+    const input = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-0.00010000",
+        asset: "USDT",
+        balance: "0.50000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "transfer",
+      },
+    };
+    const actual = formatWinLossChartData(input);
+    expect(Array.isArray(actual)).toBe(true);
+  });
+  test("should return an array of win loss data point objects, with the properties of month, wins and losses", () => {
+    const input = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-0.00010000",
+        asset: "USDT",
+        balance: "0.50000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "transfer",
+      },
+    };
+    const actual = formatWinLossChartData(input);
+    expect(actual[0]).toMatchObject({
+      month: expect.any(String),
+      wins: expect.any(Number),
+      losses: expect.any(Number),
+    });
+  });
+  test("should tally up wins and losses ledger entries and group them by month", () => {
+    const input = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "",
+      },
+      "DBCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8838523,
+        type: "margin",
+        subtype: "",
+      },
+      "ZXCV9W-TYU7H-LKI789": {
+        aclass: "currency",
+        amount: "75.0000000",
+        asset: "USDT",
+        balance: "1075.0000000",
+        fee: "0.00002000",
+        refid: "REFID456-QWERF-ZXCV567",
+        time: 1726000000.0,
+        type: "margin",
+        subtype: "",
+      },
+    };
+    const expected = [
+      { month: "Oct", wins: 0, losses: 2 },
+      { month: "Sep", wins: 1, losses: 0 },
+    ];
+    const actual = formatWinLossChartData(input);
+    expect(actual).toEqual(expected);
+  });
+  test("should only account for ledger entries with type value of margin", () => {
+    const input = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "",
+      },
+      "DBCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8838523,
+        type: "margin",
+        subtype: "",
+      },
+      "ZXCV9W-TYU7H-LKI789": {
+        aclass: "currency",
+        amount: "75.0000000",
+        asset: "USDT",
+        balance: "1075.0000000",
+        fee: "0.00002000",
+        refid: "REFID456-QWERF-ZXCV567",
+        time: 1726000000.0,
+        type: "margin",
+        subtype: "",
+      },
+      "JXCV9W-YYU7H-LKI123": {
+        aclass: "currency",
+        amount: "75.0000000",
+        asset: "USDT",
+        balance: "1075.0000000",
+        fee: "0.00002000",
+        refid: "REFID456-QWERF-ZXCV567",
+        time: 1726000000.0,
+        type: "deposit",
+        subtype: "",
+      },
+    };
+    const expected = [
+      { month: "Oct", wins: 0, losses: 2 },
+      { month: "Sep", wins: 1, losses: 0 },
+    ];
+    const actual = formatWinLossChartData(input);
+    expect(actual).toEqual(expected);
+  });
+  test("should not mutate the input object", () => {
+    const input = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "",
+      },
+    };
+    const inputCopy = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "",
+      },
+    };
+    formatWinLossChartData(input);
+    expect(input).toEqual(inputCopy);
+  });
+  test("should have an output with a different memory reference to the input", () => {
+    const input = {
+      "ABCD1G-YF3KT-YMX123": {
+        aclass: "currency",
+        amount: "-50.0000000",
+        asset: "USDT",
+        balance: "1000.0000000",
+        fee: "0.00001000",
+        refid: "REFID123-QLBPU-YFL123",
+        time: 1728488004.8839543,
+        type: "margin",
+        subtype: "",
+      },
+    };
+    const actual = formatWinLossChartData(input);
     expect(actual).not.toBe(input);
   });
 });

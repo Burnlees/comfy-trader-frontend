@@ -10,6 +10,14 @@ export type EquityChartDataPoint = {
   date: string;
 };
 
+export type WinLossDataPoint = {
+  month: string;
+  wins: number;
+  losses: number;
+};
+
+export type WinLossDataPoints = WinLossDataPoint[];
+
 export type LedgerData = {
   [key: string]: {
     aclass: string;
