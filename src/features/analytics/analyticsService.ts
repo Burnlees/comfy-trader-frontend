@@ -16,9 +16,7 @@ export const fetchPrice = async (ticker: string) => {
     const response = await axios.get(
       `https://api.coingecko.com/api/v3/simple/price?ids=${ticker}&vs_currencies=usd`
     );
-    console.log(response);
-
-    // const data = await response.json();
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -32,4 +30,15 @@ export const fetchTradeHistory = async () => {
   } catch (error) {
     throw error;
   }
+};
+
+export const fetchLedgerInfo = async () => {
+  try {
+    const path = "/api/kraken/ledger-info";
+    const { data } = await comfy.get(path);
+
+    const ledgerInfo = data.ledgerInfo.ledger;
+
+    return ledgerInfo;
+  } catch (error) {}
 };

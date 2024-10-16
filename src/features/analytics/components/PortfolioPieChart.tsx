@@ -65,8 +65,8 @@ const PortfolioPieChart = () => {
   }, [portfolioData]);
 
   return (
-    <div>
-      <Card className="">
+    <div className="">
+      <Card className="h-full">
         <CardHeader>
           <CardTitle>Portfolio Summary</CardTitle>
         </CardHeader>
