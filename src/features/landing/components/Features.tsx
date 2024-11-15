@@ -3,8 +3,8 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div className="flex flex-col p-4 gap-4">
-      <Card className="p-4">
+    <div className="grid lg:grid-cols-3 gap-4 drop-shadow-xl">
+      <Card className="">
         <CardHeader>
           <CardTitle>Automated Trading Strategies</CardTitle>
           <CardContent className="">
@@ -16,7 +16,7 @@ const Features = () => {
           </CardContent>
         </CardHeader>
       </Card>
-      <Card className="p-4">
+      <Card className="">
         <CardHeader>
           <CardTitle>Comprehensive Performance Tracking & Insights</CardTitle>
           <CardContent>
@@ -28,7 +28,7 @@ const Features = () => {
           </CardContent>
         </CardHeader>
       </Card>
-      <Card className="p-4">
+      <Card className="">
         <CardHeader>
           <CardTitle>
             Advanced Risk Management with Customisable Controls
