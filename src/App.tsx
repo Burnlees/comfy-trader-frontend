@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Access from "./pages/Access";
@@ -11,6 +11,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Settings from "./pages/Settings";
 import Analytics from "./pages/Analytics";
 import Landing from "./pages/Landing";
+import Strategies from "./pages/Strategies";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,6 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  const location = useLocation();
   return (
     <>
       <ThemeProvider defaultTheme="light" storageKey="comfy-ui-theme">
@@ -42,6 +42,10 @@ function App() {
                 <Route
                   path="/dashboard/settings"
                   element={<Dashboard content={<Settings />} />}
+                />
+                <Route
+                  path="/dashboard/strategies"
+                  element={<Dashboard content={<Strategies />} />}
                 />
               </Route>
             </Routes>
