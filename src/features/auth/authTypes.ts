@@ -16,3 +16,17 @@ export type ResetPasswordCodeProps = {
 export type ForgotPasswordFromProps = {
   setResetSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+export type ChangePasswordDetails = {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
+
+export type PasswordValidationValues = {
+  minLength: boolean;
+  number: boolean;
+  specChar: boolean;
+  upperChar: boolean;
+  lowerChar: boolean;
+};
