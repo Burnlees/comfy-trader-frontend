@@ -11,6 +11,7 @@ import { postSignUp } from "../authService";
 import { passwordInputValidation } from "../inputValidation";
 import { codeDestination } from "@/pages/Access";
 import { UserAuthenticationDetails } from "../authTypes";
+import PasswordValidation from "./PasswordValidation";
 
 interface SignUpFormProps {
   setCodeDestination: React.Dispatch<React.SetStateAction<codeDestination>>;
@@ -105,34 +106,8 @@ export const SignUpForm = ({
               {errorMessage}
             </CardDescription>
           </form>
-          <div className="p-4">
-            <p className="text-sm text-slate-900">
-              Password Must Include Atleast:
-            </p>
-            <ul className="font-light text-sm text-slate-400 p-1 list-disc list-inside">
-              <li
-                className={passwordValidation.minLength ? "text-green-700" : ""}
-              >
-                8 Characters
-              </li>
-              <li className={passwordValidation.number ? "text-green-700" : ""}>
-                1 Number
-              </li>
-              <li
-                className={passwordValidation.specChar ? "text-green-700" : ""}
-              >
-                1 Special Character
-              </li>
-              <li
-                className={passwordValidation.upperChar ? "text-green-700" : ""}
-              >
-                1 Uppercase Character
-              </li>
-              <li className={passwordValidation.number ? "text-green-700" : ""}>
-                1 Lowercase Character
-              </li>
-            </ul>
-          </div>
+          <PasswordValidation passwordValidation={passwordValidation} />
+         
         </CardContent>
       </Card>
     </div>

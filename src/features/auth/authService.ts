@@ -1,5 +1,9 @@
 import comfy from "@/api";
-import { ResetPasswordDetails, UserAuthenticationDetails } from "./authTypes";
+import {
+  ChangePasswordDetails,
+  ResetPasswordDetails,
+  UserAuthenticationDetails,
+} from "./authTypes";
 
 export const postSignUp = async (details: UserAuthenticationDetails) => {
   const { email, password } = details;
@@ -103,6 +107,23 @@ export const signOutUser = async () => {
   try {
     const path = "/sign-out";
     const response = await comfy.post(path);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const changeUserPassword = async (
+  changePasswordDetails: ChangePasswordDetails
+) => {
+  const { currentPassword, newPassword } = changePasswordDetails;
+  const request = {
+    previousPassword: currentPassword,
+    proposedPassword: newPassword,
+  };
+  try {
+    const path = "/change-password";
+    const response = await comfy.patch(path, request);
     return response;
   } catch (error) {
     throw error;
