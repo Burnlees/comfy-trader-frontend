@@ -26,7 +26,10 @@ export const fetchTradeHistory = async () => {
   try {
     const path = "/get-trades-history";
     const { data } = await comfy.get(path);
-    return data.tradesHistory;
+    const tradeArray = Object.keys(data.tradesHistory.trades).map((entry) => {
+      return data.tradesHistory.trades[entry];
+    });
+    return tradeArray;
   } catch (error) {
     throw error;
   }

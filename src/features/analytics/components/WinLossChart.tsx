@@ -28,8 +28,8 @@ const WinLossChart = ({ ledgerInfo }: EquityChartProps) => {
   if (error) return "An error has occured: " + error.message;
 
   return (
-    <div>
-      <Card>
+    <div className="h-full">
+      <Card className="h-full">
         <CardHeader>
           <CardTitle>Win/Loss</CardTitle>
         </CardHeader>
