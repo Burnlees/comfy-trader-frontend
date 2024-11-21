@@ -12,15 +12,15 @@ const Analytics = () => {
   });
 
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-7 gap-4">
+    <div className="grid lg:grid-cols-3 gap-4">
       <PortfolioPieChart />
-      <div className="lg:col-start-1">
+      <div className="lg:col-start-2">
         <WinLossChart ledgerInfo={ledgerInfo} />
       </div>
-      <div className="lg:col-start-1">
+      <div className="lg:col-start-3">
         <EquityChart ledgerInfo={ledgerInfo} />
       </div>
-      <div className="lg:col-start-2 lg:row-start-1 lg:row-span-7">
+      <div className="lg:row-start-2 lg:col-span-2">
         <TradesHistory />
       </div>
     </div>
