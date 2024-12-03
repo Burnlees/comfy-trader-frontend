@@ -3,6 +3,7 @@ import EquityChart from "@/features/analytics/components/EquityChart";
 import PortfolioPieChart from "@/features/analytics/components/PortfolioPieChart";
 import TradesHistory from "@/features/analytics/components/TradesHistory";
 import WinLossChart from "@/features/analytics/components/WinLossChart";
+import TradeManagement from "@/features/trade/components/TradeManagement";
 import { useQuery } from "@tanstack/react-query";
 
 const Analytics = () => {
@@ -22,6 +23,9 @@ const Analytics = () => {
       </div>
       <div className="lg:row-start-2 lg:col-span-2">
         <TradesHistory />
+      </div>
+      <div>
+        <TradeManagement />
       </div>
     </div>
   );
