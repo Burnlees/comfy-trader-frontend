@@ -11,7 +11,7 @@ const ProfitAndLoss = () => {
   if (isPending) return <Progress />;
   if (error) return "An error has occured: " + error.message;
 
-  return <div>PNL: {data}</div>;
+  return <div>Unrealised Pnl: {data}</div>;
 };
 
 export default ProfitAndLoss;

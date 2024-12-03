@@ -17,26 +17,26 @@ export const fetchOpenOrders = async () => {
     const orderData = response.data.openOrdersData.open;
 
     const formattedData = {
-      entryPrice: "",
-      stopLoss: "",
-      takeProfit: "",
-      volume: "",
-      orderFilled: "",
-      pair: "",
-      type: "",
+      "Entry Price": "",
+      "Stop Loss": "",
+      "Take Profit": "",
+      Volume: "",
+      Filled: "",
+      Pair: "",
+      Type: "",
     };
 
     Object.keys(orderData).forEach((order) => {
       if (orderData[order].descr.ordertype === "take-profit-limit") {
-        formattedData.takeProfit = orderData[order].descr.price;
+        formattedData["Take Profit"] = orderData[order].descr.price;
       } else if (orderData[order].descr.ordertype === "limit") {
-        formattedData.entryPrice = orderData[order].descr.price;
-        formattedData.pair = orderData[order].descr.pair;
-        formattedData.volume = orderData[order].vol;
-        formattedData.orderFilled = orderData[order].vol_exec;
-        formattedData.type = orderData[order].descr.type;
+        formattedData["Entry Price"] = orderData[order].descr.price;
+        formattedData["Pair"] = orderData[order].descr.pair;
+        formattedData["Volume"] = orderData[order].vol;
+        formattedData["Filled"] = orderData[order].vol_exec;
+        formattedData["Type"] = orderData[order].descr.type;
         const closeArray = orderData[order].descr.close.split(" ");
-        formattedData.stopLoss = closeArray[closeArray.length - 1];
+        formattedData["Stop Loss"] = closeArray[closeArray.length - 1];
       }
     });
 
@@ -51,7 +51,7 @@ export const cancelOpenOrders = async () => {
     const path = "/cancel-all-orders";
     const response = await comfy.patch(path);
     console.log(response);
-    
+
     return response;
   } catch (error) {
     throw error;
