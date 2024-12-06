@@ -7,15 +7,23 @@ import {
 } from "@/components/ui/select";
 import { StrategyProps } from "../settingsTypes";
 import { Slider } from "@/components/ui/slider";
+import { BaseSyntheticEvent } from "react";
 
 const StrategyForm = ({
   setStrategy,
   currentStrategy,
   handleSubmit,
+  strategy,
 }: StrategyProps) => {
   const handleStrategyChange = (value: string) => {
     setStrategy((currBotSettings) => {
       return { ...currBotSettings, strategy: value };
+    });
+    console.log(strategy);
+  };
+  const handleRiskChange = (event: BaseSyntheticEvent) => {
+    setStrategy((currBotSettings) => {
+      return { ...currBotSettings, risk: event.target.value };
     });
   };
 
@@ -37,8 +45,14 @@ const StrategyForm = ({
         </Select>
       </div>
       <div className="flex flex-col gap-4">
-        Risk %: 10{" "}
-        <Slider defaultValue={[50]} max={100} step={1} className="" />
+        Risk %: {strategy.risk}
+        <Slider
+          defaultValue={[currentStrategy.risk]}
+          max={100}
+          step={1}
+          className=""
+          onChange={handleRiskChange}
+        />
       </div>
     </form>
   );

@@ -25,10 +25,12 @@ const StrategyManagement = () => {
   const [currentStrategy, setCurrentStrategy] = useState<BotSettings>({
     strategy: "",
     bot_on: false,
+    risk: 1,
   });
   const [strategy, setStrategy] = useState<BotSettings>({
     strategy: "",
     bot_on: false,
+    risk: 1,
   });
 
   useEffect(() => {
@@ -38,6 +40,7 @@ const StrategyManagement = () => {
         const strategySettings: BotSettings = {
           strategy: settingsData?.data.userSettings.strategy,
           bot_on: settingsData?.data.userSettings.bot_on,
+          risk: settingsData?.data.userSettings.risk,
         };
         setCurrentStrategy(strategySettings);
         setStrategy((currStrategy: BotSettings) => {

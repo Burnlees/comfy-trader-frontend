@@ -10,6 +10,7 @@ export type ApiKeys = {
 export type BotSettings = {
   strategy: string;
   bot_on: boolean;
+  risk: number;
 };
 
 export type StrategyProps = {
