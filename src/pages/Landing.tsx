@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 import Features from "@/features/landing/components/Features";
 import Hero from "@/features/landing/components/Hero";
 

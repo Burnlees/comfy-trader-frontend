@@ -11,9 +11,9 @@ export const postApiKeys = async (apiKeys: ApiKeys) => {
     };
     const path = `/api-keys/${apiKeys.username}`;
     const response = await comfy.post(path, request);
-    return response
+    return response;
   } catch (error: any) {
-    throw error
+    throw error;
   }
 };
 
@@ -31,10 +31,11 @@ export const postUserSettings = async (
   settings: BotSettings,
   username: string | undefined
 ) => {
-  const { strategy, bot_on } = settings;
+  const { strategy, bot_on, risk } = settings;
   const request = {
     strategy,
     bot_on,
+    risk,
   };
   try {
     const path = `/user-settings/${username}`;
@@ -49,10 +50,11 @@ export const patchUserSettings = async (
   settings: BotSettings,
   username: string | undefined
 ) => {
-  const { strategy, bot_on } = settings;
+  const { strategy, bot_on, risk } = settings;
   const request = {
     strategy,
     bot_on,
+    risk,
   };
   try {
     const path = `/user-settings/${username}`;
