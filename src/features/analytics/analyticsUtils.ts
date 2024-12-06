@@ -65,6 +65,5 @@ export const formatWinLossChartData = (data: LedgerData) => {
       arr.push(dataPointObj);
       return;
     });
-
   return arr;
 };
