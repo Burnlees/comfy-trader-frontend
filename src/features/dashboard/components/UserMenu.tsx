@@ -10,7 +10,7 @@ import { ChevronUpIcon } from "@radix-ui/react-icons";
 import { useNavigate } from "react-router-dom";
 
 const UserMenu = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSignOutClick = async () => {
     try {
@@ -20,6 +20,10 @@ const UserMenu = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleChangePasswordClick = () => {
+    navigate("/dashboard/settings");
   };
 
   return (
@@ -35,7 +39,9 @@ const UserMenu = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Change Password</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleChangePasswordClick}>
+            Change Password
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={handleSignOutClick}>
             Sign Out
           </DropdownMenuItem>
