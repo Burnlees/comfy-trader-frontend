@@ -13,7 +13,7 @@ export const postSignUp = async (details: UserAuthenticationDetails) => {
   };
 
   try {
-    const path = "/register";
+    const path = "/api/kraken/register";
     const response = await comfy.post(path, request);
     return response;
   } catch (error: any) {
@@ -30,7 +30,7 @@ export const postConfirmUser = async (
     code: confirmationCode,
   };
   try {
-    const path = "/confirm-sign-up";
+    const path = "/api/auth/confirm-sign-up";
     await comfy.post(path, request);
   } catch (error: any) {
     throw error.response.data.message;
@@ -42,7 +42,7 @@ export const resendConfirmationCode = async (email: string) => {
     email,
   };
   try {
-    const path = "/resend-confirmation-code";
+    const path = "/api/auth/resend-confirmation-code";
     await comfy.post(path, request);
   } catch (error: any) {
     throw error.response.data.message;
@@ -56,7 +56,7 @@ export const userSignIn = async (details: UserAuthenticationDetails) => {
     password,
   };
   try {
-    const path = "/sign-in";
+    const path = "/api/auth/sign-in";
     const response = await comfy.post(path, request);
     return response.data.authenticationResult;
   } catch (error: any) {
@@ -69,7 +69,7 @@ export const sendResetCode = async (email: string) => {
     email,
   };
   try {
-    const path = "/forgot-password";
+    const path = "/api/auth/forgot-password";
     const response = await comfy.post(path, request);
     return response;
   } catch (error: any) {
@@ -85,7 +85,7 @@ export const resetUserPassword = async (details: ResetPasswordDetails) => {
     code,
   };
   try {
-    const path = "/confirm-forgot-password";
+    const path = "/api/auth/confirm-forgot-password";
     const response = await comfy.post(path, request);
     return response;
   } catch (error: any) {
@@ -105,7 +105,7 @@ export const verifyAccessToken = async () => {
 
 export const signOutUser = async () => {
   try {
-    const path = "/sign-out";
+    const path = "/api/auth/sign-out";
     const response = await comfy.post(path);
     return response;
   } catch (error) {
@@ -122,7 +122,7 @@ export const changeUserPassword = async (
     proposedPassword: newPassword,
   };
   try {
-    const path = "/change-password";
+    const path = "/api/auth/change-password";
     const response = await comfy.patch(path, request);
     return response;
   } catch (error) {

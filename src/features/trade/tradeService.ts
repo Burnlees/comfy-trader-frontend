@@ -2,7 +2,7 @@ import comfy from "@/api";
 
 export const fetchPnl = async () => {
   try {
-    const path = "/get-pnl";
+    const path = "/api/kraken/pnl";
     const response = await comfy.get(path);
     return response.data.unrealisedPnl;
   } catch (error) {
@@ -12,7 +12,7 @@ export const fetchPnl = async () => {
 
 export const fetchOpenOrders = async () => {
   try {
-    const path = "/get-open-orders";
+    const path = "/api/kraken/open-orders";
     const response = await comfy.get(path);
     const orderData = response.data.openOrdersData.open;
 
@@ -48,7 +48,7 @@ export const fetchOpenOrders = async () => {
 
 export const cancelOpenOrders = async () => {
   try {
-    const path = "/cancel-all-orders";
+    const path = "/api/kraken/cancel-all-orders";
     const response = await comfy.patch(path);
     console.log(response);
 
