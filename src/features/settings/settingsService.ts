@@ -9,7 +9,7 @@ export const postApiKeys = async (apiKeys: ApiKeys) => {
       apiKey,
       privateKey,
     };
-    const path = `/api-keys/${apiKeys.username}`;
+    const path = `/api/db/api-keys/${apiKeys.username}`;
     const response = await comfy.post(path, request);
     return response;
   } catch (error: any) {
@@ -19,7 +19,7 @@ export const postApiKeys = async (apiKeys: ApiKeys) => {
 
 export const getUserSettings = async (username: string | undefined) => {
   try {
-    const path = `/user-settings/${username}`;
+    const path = `/api/db/user-settings/${username}`;
     const response = await comfy.get(path);
     return response;
   } catch (error) {
@@ -38,7 +38,7 @@ export const postUserSettings = async (
     risk,
   };
   try {
-    const path = `/user-settings/${username}`;
+    const path = `/api/db/user-settings/${username}`;
     const response = await comfy.post(path, request);
     return response;
   } catch (error) {
@@ -57,7 +57,7 @@ export const patchUserSettings = async (
     risk,
   };
   try {
-    const path = `/user-settings/${username}`;
+    const path = `/api/db/user-settings/${username}`;
     const response = await comfy.patch(path, request);
     return response;
   } catch (error) {
@@ -67,7 +67,7 @@ export const patchUserSettings = async (
 
 export const getUserAPI = async (username: string) => {
   try {
-    const path = `/api-keys/${username}`;
+    const path = `/api/db/api-keys/${username}`;
     const response = await comfy.get(path);
     return response;
   } catch (error) {
@@ -77,7 +77,7 @@ export const getUserAPI = async (username: string) => {
 
 export const deleteUserApi = async (username: string) => {
   try {
-    const path = `/api-keys/${username}`;
+    const path = `/api/db/api-keys/${username}`;
     const response = await comfy.delete(path);
     console.log(response);
     return response;

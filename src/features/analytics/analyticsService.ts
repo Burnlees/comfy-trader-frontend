@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getUserBalances = async () => {
   try {
-    const path = "/get-balance";
+    const path = "/api/kraken/balance";
     const response = await comfy.get(path);
     return response.data.balanceData;
   } catch (error) {
@@ -24,7 +24,7 @@ export const fetchPrice = async (ticker: string) => {
 
 export const fetchTradeHistory = async () => {
   try {
-    const path = "/get-trades-history";
+    const path = "/api/kraken/trades-history";
     const { data } = await comfy.get(path);
     const tradeArray = Object.keys(data.tradesHistory.trades).map((entry) => {
       return data.tradesHistory.trades[entry];
