@@ -6,7 +6,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import ApiForm from "./ApiForm";
-import { Separator } from "@/components/ui/separator";
 import CurrentApi from "./CurrentApi";
 import { postApiKeys } from "../settingsService";
 import { FormEvent, useState } from "react";

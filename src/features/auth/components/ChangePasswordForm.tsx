@@ -7,7 +7,6 @@ import PasswordValidation from "./PasswordValidation";
 import { passwordInputValidation } from "../inputValidation";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { title } from "process";
 
 const ChangePasswordForm = () => {
   const navigate = useNavigate();

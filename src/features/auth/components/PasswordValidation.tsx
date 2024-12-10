@@ -1,4 +1,3 @@
-import React from "react";
 import { PasswordValidationValues } from "../authTypes";
 
 type PasswordValidationProps = {

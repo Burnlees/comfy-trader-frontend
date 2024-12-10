@@ -1,5 +1,4 @@
 import { SIDEBAR_NAV } from "@/constants";
-import React from "react";
 import { Link } from "react-router-dom";
 import UserBar from "./UserBar";
 
