@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const comfy = axios.create({
-  baseURL: "https://normal-ibex-safely.ngrok-free.app",
+  baseURL: "http://35.179.183.99:80",
   headers: {
     "Content-Type": "application/json",
     "ngrok-skip-browser-warning": true

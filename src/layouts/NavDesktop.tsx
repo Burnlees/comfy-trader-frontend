@@ -1,12 +1,11 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NAVIGATION, SIDEBAR_NAV } from "@/constants";
+import { SIDEBAR_NAV } from "@/constants";
 import UserBar from "@/features/dashboard/components/UserBar";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
@@ -17,7 +16,7 @@ const NavDesktop = () => {
       <SheetTrigger className="h-9 w-9 flex justify-center items-center">
         <HamburgerMenuIcon
           scale={100}
-          className="text-primary-foreground font-bold h-[1.2rem] w-[1.2rem]"
+          className="font-bold h-[1.2rem] w-[1.2rem]"
         />
       </SheetTrigger>
       <SheetContent side={"left"} aria-describedby={undefined}>
