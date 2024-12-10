@@ -16,7 +16,7 @@ const NavDesktop = () => {
       <SheetTrigger className="h-9 w-9 flex justify-center items-center">
         <HamburgerMenuIcon
           scale={100}
-          className="font-bold h-[1.2rem] w-[1.2rem]"
+          className="text-white font-bold h-[1.2rem] w-[1.2rem]"
         />
       </SheetTrigger>
       <SheetContent side={"left"} aria-describedby={undefined}>

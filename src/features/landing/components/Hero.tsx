@@ -24,39 +24,10 @@ const Hero = () => {
       </div>
       <img
         src={dashboardPreview}
-        className="hidden xl:block w-3/4 m-auto rounded-md border-4 border-white/30 drop-shadow-xl object-cover object-fill"
+        className="hidden xl:block w-3/4 m-auto rounded-md border-4 border-white/30 drop-shadow-xl object-fill"
       />
     </div>
   );
 };
 
 export default Hero;
-
-// const Hero = () => {
-//   return (
-//     <div className="grid lg:grid-cols-2">
-//       <div className="">
-//         <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-8xl mb-4">
-//           Effortless Trading, Powered by Precision
-//         </h1>
-//         <p className="scroll-m-20 text-l tracking-tight lg:text-l mb-4">
-//           Unlock the full potential of your trading journey by implementing
-//           backtested strategies that have been rigorously analysed to maximise
-//           performance. Whether you're a beginner or an experienced trader, our
-//           platform empowers you to trade confidently, backed by data-driven
-//           insights and automation designed to simplify and enhance your trading
-//           experience.
-//         </p>
-//       </div>
-//       <Button className="row-start-2 w-fit">
-//         <a href="/access">Get Started</a>
-//       </Button>
-//       <img
-//         src={dashboardPreview}
-//         className="border rounded-xl drop-shadow-xl row-span-2 aspect-auto"
-//       />
-//     </div>
-//   );
-// };
-
-// export default Hero;
