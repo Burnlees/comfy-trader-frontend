@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 const comfy = axios.create({
-  baseURL: "http://35.179.183.99:80",
+  baseURL: "api.comfytrader.net",
   headers: {
     "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": true
+    "ngrok-skip-browser-warning": true,
   },
 });
 
@@ -14,4 +14,3 @@ comfy.interceptors.request.use((config) => {
 });
 
 export default comfy;
-  
