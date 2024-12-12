@@ -1,5 +1,6 @@
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -28,13 +29,15 @@ const NavDesktop = () => {
             {Object.keys(SIDEBAR_NAV).map((key) => {
               const navKey = key as keyof typeof SIDEBAR_NAV;
               return (
-                <Link
-                  key={SIDEBAR_NAV[navKey].key}
-                  to={SIDEBAR_NAV[navKey].link}
-                  className="border-b-2 p-4 hover:bg-muted"
-                >
-                  {SIDEBAR_NAV[navKey].name}
-                </Link>
+                <SheetClose asChild>
+                  <Link
+                    key={SIDEBAR_NAV[navKey].key}
+                    to={SIDEBAR_NAV[navKey].link}
+                    className="border-b-2 p-4 hover:bg-muted"
+                  >
+                    {SIDEBAR_NAV[navKey].name}
+                  </Link>
+                </SheetClose>
               );
             })}
           </ul>
