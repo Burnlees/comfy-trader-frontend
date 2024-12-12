@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const comfy = axios.create({
-  baseURL: "api.comfytrader.net",
+  baseURL: "https://api.comfytrader.net",
   headers: {
     "Content-Type": "application/json",
     "ngrok-skip-browser-warning": true,
