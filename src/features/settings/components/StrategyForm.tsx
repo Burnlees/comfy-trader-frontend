@@ -11,16 +11,14 @@ import { BaseSyntheticEvent } from "react";
 
 const StrategyForm = ({
   setStrategy,
-  currentStrategy,
-  handleSubmit,
   strategy,
 }: StrategyProps) => {
   const handleStrategyChange = (value: string) => {
     setStrategy((currBotSettings) => {
       return { ...currBotSettings, strategy: value };
     });
-    console.log(strategy);
   };
+
   const handleRiskChange = (event: BaseSyntheticEvent) => {
     setStrategy((currBotSettings) => {
       return { ...currBotSettings, risk: event.target.value };
@@ -28,15 +26,15 @@ const StrategyForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4">
       <div className="flex gap-4 items-center">
         Current:{" "}
         <Select
-          defaultValue={currentStrategy.strategy}
+          defaultValue={strategy.strategy}
           onValueChange={handleStrategyChange}
         >
           <SelectTrigger>
-            <SelectValue placeholder={currentStrategy.strategy} />
+            <SelectValue placeholder={strategy.strategy} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="MACD">MACD</SelectItem>
@@ -47,7 +45,7 @@ const StrategyForm = ({
       <div className="flex flex-col gap-4">
         Risk %: {strategy.risk}
         <Slider
-          defaultValue={[currentStrategy.risk]}
+          defaultValue={[strategy.risk]}
           max={100}
           step={1}
           className=""
