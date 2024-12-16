@@ -7,10 +7,8 @@ import {
 } from "@/components/ui/select";
 import { StrategyProps } from "../settingsTypes";
 import { Slider } from "@/components/ui/slider";
-import { BaseSyntheticEvent } from "react";
-import { Progress } from "@radix-ui/react-progress";
 
-const StrategyForm = ({ setStrategy, strategy, isPending }: StrategyProps) => {
+const StrategyForm = ({ setStrategy, strategy }: StrategyProps) => {
   const handleStrategyChange = (value: string) => {
     setStrategy((currBotSettings) => {
       return { ...currBotSettings, strategy: value };
