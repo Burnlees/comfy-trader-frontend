@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+# Comfy Trader Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Link To Deployed Version
 
-Currently, two official plugins are available:
+[https://comfytrader.net/](https://comfytrader.net/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### General
 
-## Expanding the ESLint configuration
+This project is a web application built using React, TypeScript, and Tailwind CSS. It provides users with a platform to implement and manage trading strategies, as well as view portfolio analytics, Key features include strategy management, interactive data visualizations, light/dark mode, and secure user authentication. The app integrates seamlessly with the [Comfy Trader Backend API](https://github.com/Burnlees/comfy-trading-bot).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Link to Back-End Repo
 
-- Configure the top-level `parserOptions` property like this:
+[https://github.com/Burnlees/comfy-trading-bot](https://github.com/Burnlees/comfy-trading-bot)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Requirements
+
+- Minimum version of Node.js required: v16+
+
+### Instructions
+
+To run locally:
+
+```bash
+git clone https://github.com/Burnlees/comfy-trader-frontend  
+cd comfy-trader-frontend  
+npm install  
+npm run dev  
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Click the link provided in the terminal, or copy and paste it into your browser. It should look something like `http://localhost:5173/`.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Testing
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Run the test suite to ensure the application works as expected:
+
+```bash
+npm test
 ```
+
+## License
+
+This project is licensed under the **MIT License**.
