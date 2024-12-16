@@ -43,10 +43,10 @@ const SignInForm = () => {
 
       localStorage.setItem("x-token", tokens.accessToken);
       localStorage.setItem("x-refresh-token", tokens.refreshToken);
-      localStorage.setItem("idToken", tokens.idToken)
+      localStorage.setItem("idToken", tokens.idToken);
 
       navigate("/dashboard/analytics");
-    } catch (error: any) {
+    } catch (error: any) {      
       setErrorMessage(error);
     }
   };
