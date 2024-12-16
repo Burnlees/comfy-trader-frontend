@@ -16,6 +16,7 @@ export type BotSettings = {
 export type StrategyProps = {
   strategy: BotSettings;
   setStrategy: React.Dispatch<React.SetStateAction<BotSettings>>;
+  isPending?: boolean;
   handleSubmit?: (event: FormEvent) => Promise<void>;
 };
 

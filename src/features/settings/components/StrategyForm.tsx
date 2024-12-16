@@ -8,20 +8,12 @@ import {
 import { StrategyProps } from "../settingsTypes";
 import { Slider } from "@/components/ui/slider";
 import { BaseSyntheticEvent } from "react";
+import { Progress } from "@radix-ui/react-progress";
 
-const StrategyForm = ({
-  setStrategy,
-  strategy,
-}: StrategyProps) => {
+const StrategyForm = ({ setStrategy, strategy, isPending }: StrategyProps) => {
   const handleStrategyChange = (value: string) => {
     setStrategy((currBotSettings) => {
       return { ...currBotSettings, strategy: value };
-    });
-  };
-
-  const handleRiskChange = (event: BaseSyntheticEvent) => {
-    setStrategy((currBotSettings) => {
-      return { ...currBotSettings, risk: event.target.value };
     });
   };
 
@@ -45,11 +37,16 @@ const StrategyForm = ({
       <div className="flex flex-col gap-4">
         Risk %: {strategy.risk}
         <Slider
-          defaultValue={[strategy.risk]}
+          value={[strategy.risk]}
           max={100}
           step={1}
           className=""
-          onChange={handleRiskChange}
+          onValueChange={(value) =>
+            setStrategy((currBotSettings) => ({
+              ...currBotSettings,
+              risk: value[0],
+            }))
+          }
         />
       </div>
     </form>

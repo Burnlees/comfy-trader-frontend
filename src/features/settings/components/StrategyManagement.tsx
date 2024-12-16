@@ -86,6 +86,7 @@ const StrategyManagement = () => {
           <StrategyForm
             strategy={strategy}
             setStrategy={setStrategy}
+            isPending={isPending}
           />
         </CardContent>
         <CardFooter className="mt-4">
@@ -99,39 +100,3 @@ const StrategyManagement = () => {
 };
 
 export default StrategyManagement;
-
-// useEffect(() => {
-//   const fetchSettings = async () => {
-//     try {
-//       const settingsData = await getUserSettings(user?.userId);
-//       const strategySettings: BotSettings = {
-//         strategy: settingsData?.data.userSettings.strategy,
-//         bot_on: settingsData?.data.userSettings.bot_on,
-//         risk: settingsData?.data.userSettings.risk,
-//       };
-//       setCurrentStrategy(strategySettings);
-//       setStrategy((currStrategy: BotSettings) => {
-//         return { ...currStrategy, bot_on: strategySettings.bot_on };
-//       });
-//     } catch (error) {
-//       console.log(error, "<<<");
-//     }
-//   };
-//   fetchSettings();
-// }, []);
-
-// const handleSubmit = async (event: FormEvent) => {
-//   event.preventDefault();
-//   try {
-//     if (
-//       currentStrategy.strategy === "" ||
-//       currentStrategy.strategy === undefined
-//     ) {
-//       await postUserSettings(strategy, user?.userId);
-//     } else {
-//       await patchUserSettings(strategy, user?.userId);
-//     }
-//   } catch (error: any) {
-//     toast({ title: "Strategy Error", description: error.message });
-//   }
-// };
