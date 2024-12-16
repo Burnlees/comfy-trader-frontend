@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import MacdImage from "../../../assets/BTCUSDT.P_2024-11-18_20-15-56.png";
+import { useNavigate } from "react-router-dom";
 
 type StratBreakdownProps = {
   description: string;
@@ -15,6 +16,10 @@ type StratBreakdownProps = {
 };
 
 const StrategyBreakdown = ({ description, metrics }: StratBreakdownProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => [navigate("/dashboard/settings")];
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
       <section className="lg:col-span-2">
@@ -61,7 +66,9 @@ const StrategyBreakdown = ({ description, metrics }: StratBreakdownProps) => {
             Go to TradingView
           </a>
         </Button>
-        <Button className="w-fit">Implement Strategy</Button>
+        <Button className="w-fit" onClick={handleClick}>
+          Implement Strategy
+        </Button>
       </section>
     </div>
   );
